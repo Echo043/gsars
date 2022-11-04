@@ -1,0 +1,48 @@
+{% extends 'templates_focal.html' %}
+
+{% block css %}
+<style>
+h3{
+    margin-left: 15rem;
+}
+table,th,td{
+    border: 1px solid;
+    padding: 10px;
+ }
+ table{
+    margin-top: 1rem;
+    margin-left: 15rem;
+ }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container activity">
+    <div class="">
+        <h3>Activities</h3>
+    </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Activity name</th>
+                    <th>Category</th>
+                    <th>Year</th>
+                    <th>Semester</th>
+                    <th>Date</th>
+                </tr>
+                {% for record in records %}
+                <tr>
+                    <td>{{record.0}}</td>
+                    <td>{{record.1}}</td>
+                    <td>{{record.2}}</td>
+                    <td>{{record.3}}</td>
+                    <td>{{record.4}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    
+</div>
+
+{% endblock %}

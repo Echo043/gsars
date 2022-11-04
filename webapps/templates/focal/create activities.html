@@ -1,0 +1,60 @@
+{% extends 'templates_focal.html' %}
+
+{% block css %}
+<style>
+    .content 
+    {
+        margin-left: 30rem;
+    }
+    .form-group{
+        margin: 2rem 0;
+    }
+    .form-control{
+        width: 300px;
+    }
+   
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="contain">
+    <div class="content">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">Activity Name</label>
+              <input type="text" class="form-control" name="activity">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Category</label>
+              <input type="text" class="form-control" name="category">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Year</label>
+                <input type="number" class="form-control" name="year">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Semester</label>
+                <select class="form-control" onChange="combo(this, 'demo')" aria-label="Default select example" name="semester">
+                    <option>Spring</option>
+                    <option>Autumn</option>s
+                </select>
+                
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Date</label>
+                <input type="date" class="form-control" name="date">
+              </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
