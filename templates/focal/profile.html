@@ -1,0 +1,125 @@
+{% extends 'templates_focal.html' %}
+{% load static %}
+{% block title %}Profile{%endblock%}
+{% block css %}
+<style>
+.profile{
+  color:#060575;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align:center;
+  padding-right:10%;
+  padding-top:40px;
+  font-size:30px;
+  font-weight:525;
+
+}
+.title-image{
+  border-radius:100%;
+  align-items: left;
+  margin-left:30%;
+  margin-top:40px;
+  width:auto;
+  height:190px;
+ 
+}
+ 
+.rann{
+  font-family:Arial;
+  margin-top:70px;
+  
+  
+}
+.user{
+  font-size:28px;
+  font-weight:bold;
+}
+.para{
+  font-size:18px;
+}
+@media(max-width:500px){
+    .title-image{
+        margin-left: 0;
+    }
+}
+
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+    <h1 class="profile">Profile</h1>
+    {% if messages %}
+
+    {% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert"  >
+      <strong>Message:</strong>{{msg}}
+   </div>
+    {% endfor %} 
+    
+    {% endif %}
+    <div class="row">
+      <div class="col">
+        <img class=" title-image" src="{% static 'img/pic.png' %}" alt="iphone-mockup">
+
+      </div>
+
+      <!--col-lg-6 will take up the half of the screen(lg for large)-->
+      <div class="col col-sm-6 rann">
+        <h2 class="user" style="font-weight:200">User Details</h2>
+        <h4 class="para" style="padding-top:2rem">Name:{{fname}}</h4>
+        <h4 class="para" style="margin-top:1rem">Email:{{mail}}</h4><br>
+        <a href="#edit" data-toggle="modal"><button class="btn btn-primary">Change password</button></a>
+      </div>
+      
+  </div>
+   <!-- Edit -->
+
+   <div id="edit" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST" action="{% url 'update_focal' %}"> 
+            {% csrf_token %}
+          <div class="modal-header">
+            <h4 class="modal-title">Change Password</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="password" name="password"> <br>
+              
+            </div>
+            <div class="form-group">
+              <input  type="password" class="form-control" placeholder="Confirmpassword" name="confirmPassword"> <br>
+            </div>
+            
+          <div class="modal-footer">
+            <input
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              value="Cancel"
+            />
+            <button type="submit" class="btn btn-primary">Save</button>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+{% endblock %}

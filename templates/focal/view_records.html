@@ -1,0 +1,109 @@
+{% extends "templates_focal.html" %}
+{% block title %}View Records{%endblock%}
+
+{% block css %}
+<style>
+    h1{
+        color: #000080;
+    }
+    .filter{
+        background-color: gray;
+        padding: 1rem 0 0 12px;
+    }
+    form{
+        display: flex;
+    }
+    .select{
+        margin-right: 1rem;
+        background-color: #000080;
+        color: #fff;
+    }
+    .btn{
+        background-color:#fff;
+        border:1px solid #000080;
+        color: #000000;
+        height: 3rem;
+        width: 40rem;
+        margin-right: 1rem;
+    }
+    
+
+</style>
+
+{%endblock%}
+
+{% block content %}
+
+<div class="filter">
+    <form  method="POST">
+        {% csrf_token %}
+        <select class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')" name="programme">
+            {% for i in p %}
+            <option value="">{{i.0}}</option>
+            {% endfor %}
+        </select>
+
+        <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="category" >
+            {% for i in A %}
+            <option value="">{{i.0}}</option>
+            {% endfor %}
+        </select>
+
+        <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="year" >
+            {% for i in Y %}
+            <option value="">{{i.0}}</option>
+            {% endfor %}
+        </select>
+
+
+        <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="semester" >
+            <option>Spring</option>
+            <option>Autumn</option>
+        </select>
+
+        <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-primary" type="submit" name="all" style="font-size: 14px;">All Records</button>
+
+    </form>
+   
+
+</div>
+<div>
+    
+    <div>
+        {%if achieve%}
+        <h1>{{programme}}</h1>
+        <h3>{{category}}</h3>
+        <h4>{{year}}</h4>
+        <h4>{{semester}}</h4>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>SID</th>
+                <th>First name</th>
+                <th>Middle name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Activity</th>
+
+            </tr>
+            {% for record in achieve %}
+            <tr>
+                <td>{{record.0}}</td>
+                <td>{{record.1}}</td>
+                <td>{{record.2}}</td>
+                <td>{{record.3}}</td>
+                <td>{{record.4}}</td>
+                <td>{{record.5}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h1>{{programme}}</h1>
+        <h3>No records</h3>
+        {% endif %}
+    </div>
+          
+</div>
+
+{% endblock %}

@@ -1,0 +1,258 @@
+{% extends 'templates.html'%}
+{% block title %}Admin Dashboard{%endblock%}
+
+{% block css %}
+<style>
+   
+    .all{
+        display: flex;
+        position: relative;
+        
+    }
+    .contain{
+        position: absolute;
+        font-weight: bold;
+        color: white;
+        width: 200px;
+        height: 160px;
+        background-color: #0E0CB5;
+        margin-top: 1rem;
+        text-align: center;
+        padding-top: 3rem;
+        z-index: -2;
+    }
+    .contain1{
+        position: absolute;
+        font-weight: bold;
+        color: white;
+        width: 200px;
+        height: 160px;
+        background-color: #060575;
+        margin-top: 0;
+        left: 10rem;
+        text-align: center;
+        padding-top: 3rem;
+        z-index: -1;
+    }
+    .contain2{
+        position: absolute;
+        font-weight: bold;
+        color: white;
+        width: 200px;
+        height: 160px;
+        background-color: #0E0CB5;
+        margin-top: 1rem;
+        left: 20rem;
+        text-align: center;
+        padding-top: 3rem;
+        z-index: -2;
+    }   
+
+    @media(max-width:991px){
+        .activeUsers{
+        width: 100px;
+        height: 100px;
+    }
+    }
+   
+
+    @media(max-width:700px) {
+        .all{
+        display: flex;
+        position: relative;
+       margin-left: 1rem;
+    }
+    .contain{
+        position: absolute;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        width: 150px;
+        height: 120px;
+        background-color: #0E0CB5;
+        margin-top: 2rem;
+        text-align: center;
+        padding-top: 3rem;
+    }
+    .contain1{
+        position: absolute;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        width: 150px;
+        height: 120px;
+        background-color: #060575;
+        margin-top: 1rem;
+        left: 8rem;
+        text-align: center;
+        padding-top: 3rem;
+        z-index: 1;
+    }
+    .contain2{
+        position: absolute;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        width: 150px;
+        height: 120px;
+        background-color: #0E0CB5;
+        margin-top: 2rem;
+        left: 16rem;
+        text-align: center;
+        padding-top: 3rem;
+    }   
+    
+    }
+
+    
+  @media(max-width:450px) {
+
+.all{
+display: flex;
+position: relative;
+}
+.contain{
+position: absolute;
+font-weight: bold;
+font-size: 8px;
+color: white;
+width: 120px;
+height: 90px;
+background-color: #0E0CB5;
+margin-top: 2rem;
+left: -2rem;
+text-align: center;
+padding-top: 1.5rem;
+padding-right: 2rem;
+}
+.contain1{
+position: absolute;
+font-weight: bold;
+font-size: 8px;
+color: white;
+width: 120px;
+height: 90px;
+background-color: #060575;
+margin-top: 1rem;
+left: 2rem;
+text-align: center;
+padding-top: 1.5rem;
+z-index: 1;
+}
+.contain2{
+position: absolute;
+font-weight: bold;
+font-size: 8px;
+color: white;
+width: 120px;
+height: 90px;
+background-color: #0E0CB5;
+margin-top: 2rem;
+left: 6rem;
+text-align: center;
+padding-top: 1.5rem;
+padding-left: 3.5rem;
+}        
+}
+
+.activeUsers{
+    border: 1px solid rgb(118, 114, 114);
+    width: 300px;
+    height: 455px;
+    text-align: left;
+    position: absolute;
+    z-index: -1;
+    top: -13.5rem;
+    right: 3rem;
+    
+}
+.chart{
+    margin-top: 13rem;
+    width: 845px;
+}
+h5{
+    color: #060575;
+    margin-left: 2rem;
+}
+</style>
+{% endblock %}
+
+{% block content %} 
+
+
+    <div class="text-center">
+        <div class="row align-items-start" >
+          <div class="col-6">
+              <div class="all">
+                  <div class="contain">   
+                      <p>Students</p> 
+                      {{count.0.0}}
+                  </div>
+                  <div class="contain1">
+                      <p>Total Registered</p>
+                      {{count2}}
+                  </div>
+                  <div class="contain2">
+                      <p>Focal Person</p>
+                      {{count1.1.0}}
+                  </div>
+          </div>  
+            
+        </div>
+        <div class="row chart" >
+            <div class="col-8">
+                <div class="bg-white">
+                    <div>
+                        <canvas id="myChart" ></canvas>
+                      </div>                      
+                </div>
+            </div>
+        </div>
+    
+      </div>
+
+    
+    <div style=" margin-top: 20rem;" class="activeUsers p-3 bg-primary bg-opacity-10 border border-primary border-start-0 rounded-end">
+        
+    
+        {% if request.session.name %}
+        <h5>Active Users</h5>
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" style="background-color: green; border-radius:100px ;margin-right:1rem; ">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"  />
+              </svg>{{request.session.name}}</li>
+         </ul>
+        {%else%}
+        <h5>No active users</h5>
+        {% endif %}
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script>
+    var xValues = ["Bsc.CS", "Bsc. IT", "AI", "Block Chain", "Digital Media"];
+    var yValues = [{{major.0.0}},{{major.1.0}},{{major.2.0}},{{major.3.0}},{{major.4.0}}];
+    var barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+    type: "bar",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        title: {
+        display: true,
+        text: "Total Registers Students"
+        }
+    }
+    });
+    </script>
+
+    
+
+{% endblock %}

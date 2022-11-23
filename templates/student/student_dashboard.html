@@ -1,0 +1,97 @@
+{% extends 'templates_student.html' %}
+{% block title %}Student Dashboard{%endblock%}
+{% block css %}
+<style>
+    .category{
+    width:150px;
+    height: 100px;
+    background-color:#060575;
+    color: #fff;
+    text-align: center;
+    padding-top:2rem ;
+}
+.row{
+    margin:1rem 0;
+}
+table th, td{
+    padding:1rem;
+}
+th{
+    background-color:#060575;
+    color: #fff;
+
+}
+td{
+    background-color:gray;
+}
+
+
+
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-1 category">Sports</div>
+    <div class="col">
+        <table>
+            <thead>
+                {% for sports in gname.0 %}
+                <th>{{sports}}</th>
+                {% endfor %}
+            </thead>
+            <tr>
+                {% for i in programming.0 %}
+                <td>{{i}}</td>
+                {% endfor %}
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-1 category">Cultural</div>
+    <div class="col">
+        <table>
+            <thead>
+                {% for culture in cname.0 %}
+                <th>{{culture}}</th>
+                {% endfor %}
+               
+            </thead>
+            <tr>
+                {% for i in Cultural.0 %}
+                <td>{{i}}</td>
+                {% endfor %}
+                
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-1 category">Academic</div>
+    <div class="col">
+        <table>
+            <thead>
+                {% for academic in aname.0%}
+                <th>{{academic}}</th>
+                {% endfor %}
+               
+            </thead>
+            <tr>
+                {% for i in academic.0 %}
+                <td>{{i}}</td>
+                {% endfor %}
+                
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+
+{% endblock %}
