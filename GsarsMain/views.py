@@ -155,9 +155,16 @@ def addprogramme(request):
         d=request.POST
         for key,value in d.items():
             if key=="programmeadd":
-                cursor.execute("insert into programme values('{}')".format(value))
+                cursor.execute("insert into programme (pname) values('{}')".format(value))
                 m.commit() 
-    return redirect('signup')
+                return redirect('programme')
+            
+    m=sql.connect(host="localhost", user="root", password="teko", database="gsars")
+    cursor = m.cursor()  
+    cursor.execute("select * from programme")
+    p=cursor.fetchall()
+    return render(request, 'admin/addprogramme.html', {"p":p[::-1]})
+
 @cache_control(no_cache=True, must_revalidate=True, no_store=True) 
 def signupaction(request):
     if 'admin' in request.session:
@@ -328,33 +335,30 @@ def participants(request):
             d = request.POST
             for key,value in d.items():
                 if key=="all":
-                    c="select SID,F_name,M_name,L_name,Email from students"
-                    cursor.execute(c)
+                    cursor.execute("select distinct(pname) from programme")
+                    p = cursor.fetchall()
+                    cursor.execute("select SID,F_name,M_name,L_name,Email from students;")
                     table = cursor.fetchall() 
-                    return render(request, 'admin/participants.html', {'records':table})
+                    return render(request, 'admin/participants.html', {'records':table[::-1], 'p':p})
                 if key=="programme":
                     programme=value
                 if key=="year":
                     year=value
-                try:
-                    c="select SID,F_name,M_name,L_name,Email from students where Programme='{}' and Year={};".format(programme,year)
-                    cursor.execute(c)
-                    table=cursor.fetchall()  
-                    return render(request, 'admin/participants.html', {'records':table})
-                except sql.Error as e:
-                    return render(request, 'admin/participants.html', {'records':table})
-                   
+                
+            cursor.execute("select distinct(pname) from programme")
+            p = cursor.fetchall()
+            cursor.execute("select SID,F_name,M_name,L_name,Email from students where Programme='{}' and Year={};".format(programme,year))
+            table=cursor.fetchall()  
+            return render(request, 'admin/participants.html', {'records':table[::-1], 'p':p})     
            
-        m=sql.connect(host="localhost", user="root", password="teko", database="gsars")
-        cursor = m.cursor()
+        
         c="select SID,F_name,M_name,L_name,Email from students"
         cursor.execute(c)
         table = cursor.fetchall() 
-        m=sql.connect(host="localhost", user="root", password="teko", database="gsars")
-        cursor = m.cursor()
+       
         cursor.execute("select distinct(pname) from programme")
         p = cursor.fetchall()
-        return render(request, 'admin/participants.html', {'records':table, 'p':p})
+        return render(request, 'admin/participants.html', {'records':table[::-1], 'p':p})
     else:
         return redirect('login')
 
@@ -366,7 +370,7 @@ def f_participants(request):
         c="select FID,f_name,m_name,l_name,email,designation from focal;"
         cursor.execute(c)
         table = cursor.fetchall()
-        return render(request, 'admin/f_participants.html', {'records':table})
+        return render(request, 'admin/f_participants.html', {'records':table[::-1]})
     else:
         return redirect('login')
     
@@ -894,10 +898,11 @@ def deleteButton(request):
                 cursor.execute("delete from activity where AID={};".format(val))
                 m.commit()
                 return redirect('activity')
-            
-
-
-     
+            if key == "deletep":
+                val = value
+                cursor.execute("delete from programme where pid={}".format(val))
+                m.commit()
+                return redirect('programme')
     
 
 def bulk_delete(request):

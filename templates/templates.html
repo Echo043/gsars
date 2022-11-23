@@ -15,6 +15,9 @@
 
     {% endblock %}
   <style>
+    *{
+      font-size: 16px;
+    }
     .sidebar .items{
       position: absolute;
       left:-2rem;
@@ -111,9 +114,15 @@
               <li>
                   <a href="{% url 'view'%}">
                   <span class="icon"><i class="fas fa-chart-pie"></i></span>
-                  <span class="title">Student Achievements</span>
+                  <span class="title">Student <br> Achievements</span>
                 </a>
               </li>
+              <li>
+                <a href="{% url 'programme'%}">
+                <span class="icon"><i class="fas fa-chart-pie"></i></span>
+                <span class="title">Programmes</span>
+              </a>
+            </li>
               
             </ul>
           </div>

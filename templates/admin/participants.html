@@ -57,7 +57,7 @@
             {% csrf_token %}
             <select class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')" name="programme">
                 {% for i in p %}
-                <option value="">{{i.0}}</option>
+                <option>{{i.0}}</option>
                 {% endfor %}
             </select>
     
@@ -95,8 +95,7 @@
                     <th>Last name</th>
                     <th>Email</th>
                 </tr>
-                <form action="{% url 'bulkdelete' %}" method="POST">
-                {% csrf_token %}
+               
                 {% for record in records %}
                 <tr>
                     <td>
@@ -122,7 +121,7 @@
                 </tr>
                 
                 {% endfor %}
-            </form>
+          
             </table>
                
             {% else %}
