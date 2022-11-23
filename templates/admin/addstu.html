@@ -1,0 +1,390 @@
+{% extends 'templates.html' %}
+{% block title %}Student Registration{%endblock%}
+
+{% block css %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+
+  display: flex;
+  justify-content: center;
+ 
+}
+.contain{
+  max-width:700px;
+  width:100%;
+  background-color:#fff;
+  padding:25px 30px;
+  margin-top:3rem;
+  margin-left:8rem;
+  border: none;
+}
+.heading{
+    display: flex;
+   
+}
+
+.contain .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  width: 400px;
+  height: 100px;
+  background-color: #060575;
+  color: #fff;
+  text-align: center;
+  padding-top: 2rem;
+
+}
+
+.drop{
+    position: absolute;
+    margin-top: 2.5rem;
+    margin-left: 24rem;
+
+}
+
+.contain .title::before{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+ form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+ }
+ form .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ form .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ form .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #9b59b6;
+   border-color: #d9d9d9;
+ }
+ form input[type="radio"]{
+   display: none;
+ }
+ form .button{
+   height: 45px;
+   margin: 35px 0;
+   background:#060575;
+   margin-top: 50px;
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background:#060575;
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+@media(max-width:990px){
+  .contain{
+    margin-left: -1rem ;
+  }
+}
+
+@media(max-width:850px){
+  
+  .contain{
+    margin-left: -1rem ;
+    font-size: 12px;
+  }
+  .form-select{
+    font-size: 12px;
+
+  }
+  .drop{
+    margin-left: 7rem;
+    margin-top: 2rem;
+  }
+  .contain .title{
+    width: 150px;
+    height: 80px;
+    font-size: 16px;
+  }
+
+}
+ @media(max-width: 584px){
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+ 
+}
+
+
+.dropzone{
+  /*width: 300px;
+  height: 100px;*/
+  width: 305px;
+  height: 128px;
+  border:2px dashed #ccc;
+  color: #ccc;
+  line-height: 150px;
+  text-align: center;
+}
+
+.dropzone.dragover{
+  border-color: #000;
+  color: #000;
+}
+
+.btn1{
+    width:150px;
+    height:50px;
+    margin-top: 1rem;
+    margin-right: 5rem;
+}
+.bulky{
+  margin-top: 1rem;
+}
+
+
+
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="contain">
+  <div class="message">
+    {% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert"  >
+      <strong>Message:</strong>{{msg}}
+   </div>
+    {% endfor %} 
+  </div>
+    <div class="heading">
+        <div class="title">
+            Register
+        </div>
+        <div class="drop">
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Choose role
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/Admin/addstu">Student</a></li>
+                <li><a class="dropdown-item" href="/Admin/addfocal">Focal</a></li>
+              </ul>
+            </div>
+      </div>
+
+    </div>
+
+    <div class="content">
+      <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+
+          <div class="input-box one">
+            <span class="details ">SID.No</span>
+            <input type="text" name="sid" required>
+          </div>
+          <div class="input-box two">
+            <span class="details">Password</span>
+            <input type="text" name="password"  required>
+          </div>
+
+          <div class="input-box three">
+            <span class="details">First Name</span>
+            <input type="text" name="f_name" required>
+          </div>
+
+          <div class="input-box four">
+            <span class="details">Programme</span>
+            <select class="form-select" name = "programme">
+              {% for i in p %}
+              <option>{{i.0}}</option>
+              {% endfor %}
+              
+            </select>
+          </div>
+
+          <div class="input-box five">
+            <span class="details">Middle Name</span>
+            <input type="text" name="m_name">
+          </div>
+
+          <div class="input-box six">
+            <span class="details">Year</span>
+            <select class="form-select" name = "year">
+              <option value="1">I</option>
+              <option value="2">II</option>
+              <option value="3">III</option>
+              <option value="4">IV</option>
+            </select>
+          </div>
+
+           <div class="input-box seven">
+            <span class="details">Last Name</span>
+            <input type="text" name="l_name" required>
+          </div>
+
+          <div class="input-box eight">
+            <span class="details">Semester</span>
+            <select class="form-select" name = "Semester">
+              <option value="Spring">Spring</option>
+              <option value="Autumn">Autumn</option>
+            </select>
+          </div>
+ 
+          <div class="input-box nine">
+            <span class="details">Email</span>
+            <input type="Email" name="email" required>
+          </div>
+          <button  class="btn btn-outline-primary btn1" type="submit">Register</button>
+        
+
+      </form>
+      <form action="{% url 'bulk'%}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group bulky">
+          <label for="myfile">Select a file:</label>
+          <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="myfile" name="myfile" class="form-control"><br><br>
+          <button type="submit" class="btn btn-primary">Bulk add</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+
+  <a href="#edit" data-toggle="modal" ><button class="btn btn-primary">Programme</button></a>
+
+
+   <!-- Edit -->
+
+   <div id="edit" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST" action="{% url 'programme' %}"> 
+            {% csrf_token %}
+          <div class="modal-header">
+            <h4 class="modal-title">Add new programme</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <label>Programme</label>
+                <input type="text" class="form-control" name="programmeadd" required />
+              </div>
+            
+          <div class="modal-footer">
+            <input
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              value="Cancel"
+            />
+            <button type="submit" class="btn btn-primary">Save</button>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+{% endblock %}
+

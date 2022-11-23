@@ -1,0 +1,75 @@
+{% extends 'templates_focal.html'%}
+{% block title %}Focal Dashboard{%endblock%}
+{% block css %}
+
+<style>
+.contain{
+  
+    font-weight: bold;
+    color: white;
+    width: 120px;
+    height: 90px;
+    background-color: #0E0CB5;
+    text-align: center;
+    padding-top: 1rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
+
+
+ }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+    </div>
+
+    <div class="col">
+        <div class="contain">
+        Featured Activity<br>
+        {{count}}
+        
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script>
+var xValues = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
+var yValues = [{{year.0}},{{year.1}},{{year.2}},{{year.3}}];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9"
+];
+
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Statistics"
+    }
+  }
+});
+</script>
+
+
+
+
+
+{% endblock %}

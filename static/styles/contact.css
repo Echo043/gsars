@@ -1,0 +1,432 @@
+
+html {
+  overflow-x: hidden;
+  }
+  .water{
+    transform: rotateZ(-90deg);
+    font-size:150px;
+    position:absolute;
+    margin-left:-16rem;
+    font-weight:700;
+    font-family:Arial;
+    margin-top:-25rem;
+    opacity:10%;
+  }
+  
+
+body {
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+ h2, h3, h4, h5, h6 {
+  font-family: "Montserrat-Bold";
+}
+
+
+p {
+  color: #474646;
+  font-family: Arial;
+}
+
+/* Headings */
+
+.big-heading {
+  font-family: "Arial";
+  font-size: 36px;
+  line-height: 1.5;
+  color:#474646;
+  margin-left:6rem;
+  font-weight:600;
+  
+  width:470px;
+  text-align:left;
+
+}
+
+.section-heading {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.navbar-collapse{
+  padding-left: 42%;
+}
+
+/* Containers */
+
+.container-fluid{
+  padding: 7% 15%;
+}
+
+/* Sections */
+
+.colored-section {
+  background-color: #ff4c68;
+  color: #fff;
+  width:1100px;
+}
+
+.white-section {
+  background-color: #fff;
+}
+
+/* Navigation Bar */
+
+.navbar {
+  
+  background-color: #e0e0e5;
+  
+  width:120%;
+}
+.dee{
+  margin-top:-50px;
+}
+
+.rannas{
+  background-color:#0100BE;
+  border-radius:10px;
+  position:static;
+  height:62px;
+  margin-left:-10rem;
+  width:60%;
+}
+.ss{
+  padding: 0 0 10rem;
+}
+.rr{
+  padding: 0 0 3rem;
+}
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 60px;
+height: 62 px;
+
+  
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+  margin-left: 20px;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+/* Buttons */
+
+.download-button {
+  margin: 5% 3% 5% 0;
+  margin-left:2rem;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: #0100BE;
+  width:154px;
+  height:56px;
+  margin-left:2.2rem;
+  border-radius:0 20px 0 20px;
+  
+}
+
+/* Title Section */
+
+#title {
+  background-color: #ffffff; /*hero banner color*/
+  color: #fff;
+  text-align: left;
+}
+/* container fluid inside the title setion  */
+#title .container-fluid {
+  padding: 3% 15% 7%;
+}
+
+/* Title Image */
+
+.title-image {
+  width: 100%;
+  /*transform: rotate(25deg);  /* rotating the image by 45 degree*/
+  position: relative; /*making the image get below the feature section
+  fot that follow the chart */
+  margin-top:-4rem;
+  margin-left:50px;
+
+  
+}
+.aim-image {
+  width:100px; 
+  height:100px;
+  /*transform: rotate(25deg);  /* rotating the image by 45 degree*/
+  position: relative; /*making the image get below the feature section
+  fot that follow the chart */
+  margin-top:2rem;
+  margin-bottom: 1rem;
+  margin-left:10px;
+ 
+}
+.para-aim{
+  width:400px;
+  
+  margin-right:1.5rem;
+  position:static;
+  color:#474646;
+  
+}
+.para-aim1{
+  width:500px;
+ 
+  padding-top:1rem;
+  
+  text-align: center;
+ 
+
+  padding-right: 150%;
+  
+
+}
+
+.kk{
+  width:90%;
+}
+.aim1{
+  position:absolute;
+  margin-left:100%;
+}
+
+/* benefits section*/
+
+/* Benefits section */
+#benefits{
+  margin: 16rem 5rem 0;
+}
+
+
+
+
+/* Features Section */
+.op{
+  background:#0100BE;
+   height:100px;
+    width:98%; 
+}
+#features {
+  position: relative;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+}
+
+.feature-box {
+  padding: 4.5%;
+  background:#e0e0e5;
+  height:15rem; 
+  margin-left:1rem;
+  margin-bottom:1rem;
+  align-items: center;
+  width:720px;
+   
+}
+.ran{
+  margin-left:-70px;
+}
+.caa{
+  padding-left:8.3%; 
+   width:86%; 
+   margin-left:5%; 
+   margin-right:5%;
+}
+.bene{
+  position:relative;
+  margin-left:40%;
+   margin-bottom:20px;
+ 
+}
+
+
+.icon {
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.icon:hover {
+  color: #0100BE;
+}
+
+/* Testimonial Section */
+
+#testimonials {
+  background-color: #363636;
+}
+
+.testimonial-text {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.testimonial-image {
+  width: 10%;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+
+
+#press {
+  background-color: #ef8172;
+  padding-bottom: 3%;
+}
+
+.press-logo {
+  width: 15%;
+  margin: 20px 20px 50px;
+}
+
+/* Pricing Section */
+
+#pricing {
+  padding: 100px;
+}
+
+.price-text {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.pricing-column {
+  padding: 3% 2%;
+}
+
+/* CTA Section */
+
+
+/* Footer Section */
+
+
+.social-icon {
+  margin: 20px 10px;
+}
+
+ /* setting condition based on certain measures */
+
+
+/* phone size*/
+
+@media(max-width:590px){ /* */
+ 
+  /* hero banner description*/
+ .ll{
+  margin-left:-3rem;
+  margin-top:-1rem;
+ }
+  .r{
+  text-align:left;
+
+  }
+  
+  
+  /* hero banner pic*/
+  .title-image{ 
+    margin-left:-3rem;
+    margin-top:rem;
+    width:40%;
+  }
+  .dee{
+    margin-left:-5rem;
+  }
+
+
+.water{
+  font-size:100px;
+  margin-top:1rem;
+  margin-left:-11rem;
+}
+  }
+
+@media(max-width:1128px){
+  
+
+.raa{
+  margin-left:1rem;
+}
+
+}
+
+
+  #footer{
+    background-color: #060575;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    margin-top: auto;
+    height:200px;
+  
+
+}
+
+.foot{
+  position:static;
+  padding-top:3rem;
+  font-family:Arial;
+  color:#474646;
+}
+
+.bene{
+  width: 240px;
+  height: 45px;
+  margin-left: 45rem;
+}
+
+   
+    @media(max-width:990px){
+    
+     .title-image{
+      margin-left:10rem;
+      width:60%;
+      padding-bottom:5rem;
+     }
+     
+     .big-heading{
+      text-align:center;
+     }
+     .r{
+      margin-left:9rem;
+     }
+     .foot{
+      margin-top:2%;
+     }
+     .water{
+      margin-top:-30rem;
+      opacity:5%;
+     }
+     
+     
+    }
+    @media(max-width:768px){
+      
+      .row{
+        margin-left:-2rem;
+      }
+      .teamblue{
+        width:85%;
+        padding-left:8rem;
+       
+       }
+       .big-heading{
+        margin-left:4rem;
+       }
+       .r{
+        margin-left:6rem;
+       }
+    }
+
+ 

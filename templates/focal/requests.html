@@ -1,0 +1,62 @@
+{% extends 'templates_focal.html' %}
+{% block title %}Requests{%endblock%}
+{% block css %}
+<style>
+    table,thead,tr{
+        text-align: center;
+
+    }
+    th,td{
+        padding: 5px 10px;
+    }
+    
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if requests %}
+<table class="table table-striped table-hover">
+    <thead>
+        <th>SID</th>
+        <th>Activity Name</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Semester</th>
+    </thead>
+    {% for request in requests %}
+    <tr>
+        <td>{{request.0}}</td>
+        <td>{{request.1}}</td>
+        <td>{{request.2}}</td>
+        <td>{{request.3}}</td>
+        <td>{{request.4}}</td>
+        <td>
+            <form action="{%url 'approve'%}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit" name="approve" value="{{request.5}}">
+                    Approve
+                </button>
+            </form>
+        </td>
+        <td>
+            <form action="{%url 'approve'%}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-outline-secondary" type="submit" name='reject' value="{{request.5}}">
+                  Reject
+                </button>
+            </form>    
+        </td>
+    </tr>
+    {% endfor %}
+    
+
+</table>
+{% else %} 
+<h1>No requests</h1>
+
+{% endif %}
+
+{% endblock %}

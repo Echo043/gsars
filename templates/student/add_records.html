@@ -1,0 +1,98 @@
+
+{% extends 'templates_student.html' %}
+{% load static %}
+{% block title %}Add record{%endblock%}
+
+{% block css %}
+<style>
+
+  .backgroundimg{
+    position: absolute;
+    width: 300px;
+    height: 550px;
+    z-index: -1;
+    left: 30rem;
+  }
+  .content{
+    background-color: #fff;
+    margin-left: 20%;
+    position: absolute;
+    padding: 2rem;
+    top: 7rem;
+    left: 25rem;
+    z-index: -1;
+
+  }
+    .form-group{
+        margin: 2rem 0;
+    }
+    .form-control{
+        width: 300px;
+    }
+ 
+   
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+  <img class="backgroundimg" src="{% static 'images/_login.png' %}" alt="">
+
+    <div class="content">
+      <div class="message">
+        {% for msg in messages %}
+        <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert"  >
+          <strong>Message:</strong>{{msg}}
+       </div>
+        {% endfor %} 
+      </div>
+      
+        <form action="" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputPassword1">Activity Name</label>
+                <select class="form-control" onChange="combo(this, 'demo')" aria-label="Default select example" name="aname">
+                  {% for i in A_name %}
+                   <option>{{i.0}}</option>
+                  {% endfor %}
+                </select>  
+              </div>
+         
+              <div class="form-group">
+                <label for="exampleInputPassword1">Category</label>
+                <select class="form-control" onChange="combo(this, 'demo')" aria-label="Default select example" name="category">
+                    {% for i in Category %}
+                    <option>{{i.0}}</option>
+                    {% endfor %} 
+                </select>
+              </div> 
+              
+             
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Year</label>
+                    <select class="form-control" onChange="combo(this, 'demo')" aria-label="Default select example" name="year">
+                      {% for i in Year %}
+                      <option>{{i.0}}</option>
+                      {% endfor %}
+                    </select>  
+              </div>
+             
+              
+              <div class="form-group">
+                <label for="exampleInputPassword1">Semester</label>
+                <select class="form-control" onChange="combo(this, 'demo')" aria-label="Default select example" name="semester">
+                  {% for i in Semester %}
+                  <option>{{i.0}}</option>
+                  {% endfor %}
+                </select>  
+              </div>
+              
+              
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+    </div>
+
+{% endblock %}
+

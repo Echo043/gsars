@@ -1,0 +1,153 @@
+{% extends "templates.html" %}
+{% block title %}Student Records{%endblock%}
+
+{% block css %}
+<style>
+    .s_information{
+    text-align: center;
+    width: 400px;
+    height: 80px;
+    background-color: #060575;
+    color: #fff;
+    padding-top: 1.5rem;
+
+}
+    form{
+        display: flex;
+    }
+    .select{
+        margin-right: 1rem;
+        background-color: #000080;
+        color: #fff;
+    }
+    .btn{
+        background-color:#fff;
+        border:1px solid #000080;
+        color: #000000;
+        height: 3rem;
+        margin-right: 1rem;
+    }
+    .allrecords{
+        font-size: 12px;
+    }
+    .deleteall{
+        font-size: 12px;
+
+    }
+    
+    
+
+</style>
+
+{% endblock %}
+{% block content %}
+    
+    <div class="message">
+    {% for msg in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert"  >
+      <strong>Message:</strong>{{msg}}
+   </div>
+    {% endfor %} 
+  </div>
+    <div class="s_information">
+        <h3>Students Information</h3>
+    </div>
+    <div class="filter">
+        <form  method="POST">
+            {% csrf_token %}
+            <select class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')" name="programme">
+                {% for i in p %}
+                <option value="">{{i.0}}</option>
+                {% endfor %}
+            </select>
+    
+            <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="year" >
+                <option value="1">I</option>
+                <option value="2">II</option>
+                <option value="3">III</option>
+                <option value="4">IV</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-primary allrecords" type="submit" name="all">All Records</button>
+
+        </form>
+       
+
+    </div>
+    <div>
+        
+        <div>
+            <form action="{% url 'bulkdelete'%}" method="POST">
+                {% csrf_token %}
+                <input class='form-control'  type="text" name="checkuser" id="checkuser" style="margin-right:5px ;">
+                <button class="btn btn-outline-danger" type="submit">Delete</button>
+                <button class="btn btn-outline-danger deleteall" type="submit" name="deleteall">Delete all</button>
+            </form>
+            
+            {%if records%}
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th></th>
+                    <th>SID</th>
+                    <th>First name</th>
+                    <th>Middle name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                </tr>
+                <form action="{% url 'bulkdelete' %}" method="POST">
+                {% csrf_token %}
+                {% for record in records %}
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkuser"  value="{{record.0}}">    
+                    </td>
+                
+                    <td>{{record.0}}</td>
+                    <td>{{record.1}}</td>
+                    <td>{{record.2}}</td>
+                    <td>{{record.3}}</td>
+                    <td>{{record.4}}</td>
+                    <td> 
+                        <form action="{% url 'delete' %}" method="POST">
+                            {% csrf_token %}
+                        <button type="submit" name="deletesingle" value="{{record.0}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                        </button>
+                        </form>
+                    </td>
+                </tr>
+                
+                {% endfor %}
+            </form>
+            </table>
+               
+            {% else %}
+            <h1>No records</h1>
+            {% endif %}
+        </div>
+              
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.checkuser').click(function(){
+                var txt = "";
+                $('.checkuser:checked').each(function(){
+                    txt+=$(this).val()+","
+                });
+                $('#checkuser').val(txt);
+            });
+        });
+
+    </script>
+
+
+   
+    
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'templates_student.html' %}
+{% block title %}Request{%endblock%}
+
+{% block css %}
+<style>
+  
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Requested List</h1>
+{%if table%}
+<table class="table table-striped table-hover">
+    <thead>
+        <th>Activity</th>
+        <th>Year</th>
+        <th>Semester</th>
+        <th>Status</th>
+    </thead>
+    {%for records in table%}
+    <tr>
+        <td>{{records.0}}</td>
+        <td>{{records.1}}</td>
+        <td>{{records.2}}</td>
+        {% if 'Approved' in records.3 %}
+        <td  style="background-color: Green; color: white;">{{records.3}}</td>
+        {% elif 'Pending' in records.3 %}
+        <td  style="background-color: rgb(237, 195, 10); color: black; font-weight:bold;">{{records.3}}</td>
+        {% else %}
+        <td  style="background-color: red; color: white;">{{records.3}}</td>
+        {% endif %}
+ 
+    </tr>
+    {%endfor%}
+
+</table>
+{% else %}
+No records
+
+{% endif %}
+
+{% endblock %}
