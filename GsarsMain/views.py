@@ -410,7 +410,7 @@ def view_records(request):
         cursor.execute("select distinct(pname) from programme")
         p = cursor.fetchall()
 
-        cursor.execute("select distinct(A_name) from activity")
+        cursor.execute("select distinct(Category) from activity")
         A = cursor.fetchall()
 
         cursor.execute("select distinct(Year) from activity")
@@ -604,7 +604,7 @@ def focal_view_records(request):
         cursor.execute("select distinct(pname) from programme")
         p = cursor.fetchall()
 
-        cursor.execute("select distinct(A_name) from activity")
+        cursor.execute("select distinct(Category) from activity")
         A = cursor.fetchall()
 
         cursor.execute("select distinct(Year) from activity")
