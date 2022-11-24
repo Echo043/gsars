@@ -580,7 +580,15 @@ def focal_view_records(request):
                 if key == 'all':
                     cursor.execute("select students.SID,students.F_name,students.M_name,students.L_name,students.Email,activity.A_name from students, activity, record where activity.AID = record.AID and students.SID=record.SID;")
                     achieve = cursor.fetchall()
-                    return render(request,'focal/view_records.html',{'achieve':achieve})
+                    cursor.execute("select distinct(pname) from programme")
+                    p = cursor.fetchall()
+
+                    cursor.execute("select distinct(A_name) from activity")
+                    A = cursor.fetchall()
+
+                    cursor.execute("select distinct(Year) from activity")
+                    Y = cursor.fetchall()
+                    return render(request,'focal/view_records.html',{'achieve':achieve,'p':p, 'A':A, 'Y':Y})
                 if key == 'category':
                     category=value
                 if key=='programme':
@@ -589,8 +597,10 @@ def focal_view_records(request):
                     year = value
                 if key == 'semester':
                     semester= value   
+                        
             cursor.execute("select students.SID,students.F_name,students.M_name,students.L_name,students.Email,activity.A_name from students, activity, record where activity.AID = record.AID and students.SID=record.SID and students.Programme='{}' and activity.Year={} and activity.Category='{}' and activity.Semester='{}';".format(programme,year,category,semester))
             achieve = cursor.fetchall()
+
         cursor.execute("select distinct(pname) from programme")
         p = cursor.fetchall()
 

@@ -39,19 +39,19 @@
         {% csrf_token %}
         <select class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')" name="programme">
             {% for i in p %}
-            <option value="">{{i.0}}</option>
+            <option>{{i.0}}</option>
             {% endfor %}
         </select>
 
         <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="category" >
             {% for i in A %}
-            <option value="">{{i.0}}</option>
+            <option>{{i.0}}</option>
             {% endfor %}
         </select>
 
         <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="year" >
             {% for i in Y %}
-            <option value="">{{i.0}}</option>
+            <option>{{i.0}}</option>
             {% endfor %}
         </select>
 

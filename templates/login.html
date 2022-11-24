@@ -30,16 +30,16 @@
         .img p{
             font-size:140px;
             transform: rotate(-90deg);
-            position: absolute;
+            position:absolute;
             top: 170px;
-            right: 21.5rem;
+            left: 33%;
             z-index: 0;
             font-weight: 600;
             color:#ffffff ;
             opacity: 25%;
         }
         .img .reflection{
-            width: 451px ;
+            width: 125%;
             height: 50px;
             margin-top:9px;
             margin-left:4rem;
@@ -97,8 +97,8 @@
         @media(max-width:991px){
             section{margin:0;}
         }
-        @media(max-width:784px){
-            .container{
+        /* @media(max-width:900px){
+            .container{ 
                 position: relative;
             }
             .img .login{
@@ -126,17 +126,32 @@
             width:5px ;
             height: 5px;
             margin-top:9px;
-            margin-left:3.5rem;
+
             opacity: 0%;
         }
-    }
-        @media(max-width:541px){
+    } */
+        @media(max-width:784px){
+            body{
+                background-color: #060575;
+            }
             .img .login{
                 margin-left: 4.5rem;
                
             }
             .form{
-                margin-left: -6rem;
+                margin-left: 18%;
+                margin-top: -29rem;
+            }
+            .clip{
+                opacity: 0;
+            }
+            .user-icon{
+                margin-top: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+            .img p{
+                opacity: 0;
             }
             .img .reflection{
             width:5px ;

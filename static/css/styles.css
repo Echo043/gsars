@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,500&display=swap');
 
 
 *{
@@ -7,7 +7,7 @@
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .wrapper{
@@ -172,12 +172,14 @@
 .main_container .sidebar ul li a{
   color: #fff;
   font-size: 12px;
-  padding: 10px 30px;
+  padding: 3px 67px 3px 30px;
   white-space: nowrap;
   display: flex;
   align-items: center;
   margin-bottom: 1px;
   transition: all 0.3s ease;
+  border-top-left-radius:30px ;
+  border-bottom-left-radius: 30px;
 }
 
 .main_container .sidebar ul li a .icon{

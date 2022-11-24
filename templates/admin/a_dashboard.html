@@ -7,13 +7,14 @@
     .all{
         display: flex;
         position: relative;
+        margin-left:8%;
         
     }
     .contain{
         position: absolute;
         font-weight: bold;
         color: white;
-        width: 200px;
+        width: 50%;
         height: 160px;
         background-color: #0E0CB5;
         margin-top: 1rem;
@@ -25,11 +26,11 @@
         position: absolute;
         font-weight: bold;
         color: white;
-        width: 200px;
+        width: 50%;
         height: 160px;
         background-color: #060575;
         margin-top: 0;
-        left: 10rem;
+        left:40%;
         text-align: center;
         padding-top: 3rem;
         z-index: -1;
@@ -38,142 +39,126 @@
         position: absolute;
         font-weight: bold;
         color: white;
-        width: 200px;
+        width: 50%;
         height: 160px;
         background-color: #0E0CB5;
         margin-top: 1rem;
-        left: 20rem;
+        left:80%;
         text-align: center;
         padding-top: 3rem;
         z-index: -2;
     }   
 
-    @media(max-width:991px){
-        .activeUsers{
-        width: 100px;
-        height: 100px;
-    }
-    }
-   
+.activeUsers{
+    width: 30%;
+    height: 455px;
+    text-align: left;
+    float: right;
+    margin-top: -28.3rem;
+    background-color:#d8d8df;
+          
+}
 
-    @media(max-width:700px) {
-        .all{
-        display: flex;
-        position: relative;
-       margin-left: 1rem;
-    }
-    .contain{
+.chart{
+    margin-top: 13rem;
+    width: 60%;
+    margin-left:6%;
+}
+
+h5{
+    color: rgb(0, 0, 0);
+    margin-left: 3.8rem;
+}
+@media(max-width:1100px){
+.activeUsers{
+    margin-top:100px;
+    margin-right:30%;
+    width:40%;
+   
+    height:auto;
+    margin-bottom:2rem;
+}
+.chart{
+    width:700px;
+   padding-left:2%;
+   text-align:center;
+  
+}
+.contain{
         position: absolute;
         font-weight: bold;
-        font-size: 12px;
         color: white;
-        width: 150px;
-        height: 120px;
+        width: 60%;
+        height: 160px;
         background-color: #0E0CB5;
-        margin-top: 2rem;
+        margin-top: 1rem;
         text-align: center;
         padding-top: 3rem;
+        z-index: -2;
+        left:20%;
     }
     .contain1{
         position: absolute;
         font-weight: bold;
-        font-size: 12px;
         color: white;
-        width: 150px;
-        height: 120px;
+        width: 60%;
+        height: 160px;
         background-color: #060575;
-        margin-top: 1rem;
-        left: 8rem;
+        margin-top: 0;
+        left:75%;
         text-align: center;
         padding-top: 3rem;
-        z-index: 1;
+        z-index: -1;
     }
     .contain2{
         position: absolute;
         font-weight: bold;
-        font-size: 12px;
         color: white;
-        width: 150px;
-        height: 120px;
+        width: 60%;
+        height: 160px;
         background-color: #0E0CB5;
-        margin-top: 2rem;
-        left: 16rem;
+        margin-top: 1rem;
+        left:130%;
         text-align: center;
         padding-top: 3rem;
+        z-index: -2;
     }   
-    
+}
+
+@media(max-width:824px){
+    .activeUsers{
+    width:220px;
+   
+   
     }
-
-    
-  @media(max-width:450px) {
-
-.all{
-display: flex;
-position: relative;
-}
-.contain{
-position: absolute;
-font-weight: bold;
-font-size: 8px;
-color: white;
-width: 120px;
-height: 90px;
-background-color: #0E0CB5;
-margin-top: 2rem;
-left: -2rem;
-text-align: center;
-padding-top: 1.5rem;
-padding-right: 2rem;
-}
-.contain1{
-position: absolute;
-font-weight: bold;
-font-size: 8px;
-color: white;
-width: 120px;
-height: 90px;
-background-color: #060575;
-margin-top: 1rem;
-left: 2rem;
-text-align: center;
-padding-top: 1.5rem;
-z-index: 1;
-}
-.contain2{
-position: absolute;
-font-weight: bold;
-font-size: 8px;
-color: white;
-width: 120px;
-height: 90px;
-background-color: #0E0CB5;
-margin-top: 2rem;
-left: 6rem;
-text-align: center;
-padding-top: 1.5rem;
-padding-left: 3.5rem;
-}        
+    .contain{
+       width:120%;
+        height:150px;
+        margin-left:-60px;
+        
+       
+    }
+    .contain1{
+        margin-top:173px;
+        margin-left:-76px;
+        width:150%;
+        
+        
+        
+    }
+    .contain2{
+     
+        width:120%;
+        height:150px;
+        margin-left:-30px;
+    }
+    .chart{
+        padding-top: 150px;
+        
+        
+    }
 }
 
-.activeUsers{
-    border: 1px solid rgb(118, 114, 114);
-    width: 300px;
-    height: 455px;
-    text-align: left;
-    position: absolute;
-    z-index: -1;
-    top: -13.5rem;
-    right: 3rem;
-    
-}
-.chart{
-    margin-top: 13rem;
-    width: 845px;
-}
-h5{
-    color: #060575;
-    margin-left: 2rem;
-}
 </style>
 {% endblock %}
 
@@ -199,9 +184,9 @@ h5{
           </div>  
             
         </div>
-        <div class="row chart" >
-            <div class="col-8">
-                <div class="bg-white">
+        <div class=" chart">
+            <div class="">
+                <div class="bg-white" >
                     <div>
                         <canvas id="myChart" ></canvas>
                       </div>                      
@@ -212,10 +197,11 @@ h5{
       </div>
 
     
-    <div style=" margin-top: 20rem;" class="activeUsers p-3 bg-primary bg-opacity-10 border border-primary border-start-0 rounded-end">
+    <div class="activeUsers p-3  border-start-0 rounded-end">
         
     
         {% if request.session.name %}
+        
         <h5>Active Users</h5>
         <ul>
             <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" style="background-color: green; border-radius:100px ;margin-right:1rem; ">
