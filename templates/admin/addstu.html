@@ -40,13 +40,14 @@ body{
   color: #fff;
   text-align: center;
   padding-top: 2rem;
-
 }
+
 
 .drop{
     position: absolute;
-    margin-top: 2.5rem;
-    margin-left: 24rem;
+    margin-top: 1.7rem;
+    margin-left: 20rem;
+    
 
 }
 
@@ -147,12 +148,25 @@ form .input-box span.details{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
-@media(max-width:990px){
+@media(max-width:1089px){
   .contain{
-    margin-left: -1rem ;
+    margin-left:-5%;
   }
 }
 
+@media(max-width:774px){
+  .rt{
+    margin-left:-13rem;
+    margin-top:3rem;
+  }
+ 
+ 
+}
+@media(max-width:628px){
+  .rt{
+    margin-left:-21rem;
+  }
+}
 @media(max-width:850px){
   
   .contain{
@@ -163,15 +177,7 @@ form .input-box span.details{
     font-size: 12px;
 
   }
-  .drop{
-    margin-left: 7rem;
-    margin-top: 2rem;
-  }
-  .contain .title{
-    width: 150px;
-    height: 80px;
-    font-size: 16px;
-  }
+
 
 }
  @media(max-width: 584px){
@@ -195,6 +201,8 @@ form .user-details .input-box{
   .container .content .category{
     flex-direction: column;
   }
+  
+ 
  
 }
 
@@ -215,12 +223,7 @@ form .user-details .input-box{
   color: #000;
 }
 
-.btn1{
-    width:150px;
-    height:50px;
-    margin-top: 1rem;
-    margin-right: 5rem;
-}
+
 .bulky{
   margin-top: 1rem;
 }
@@ -247,8 +250,8 @@ form .user-details .input-box{
             Register
         </div>
         <div class="drop">
-          <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="dropdown rt">
+              <button class="btn dropdown-toggle"  style = " border-radius:0px; height:50px; background-color:rgb(212, 212, 212);"type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Choose role
               </button>
               <ul class="dropdown-menu">
@@ -260,7 +263,7 @@ form .user-details .input-box{
 
     </div>
 
-    <div class="content">
+    <div class="content cc">
       <form action="#" method="POST">
         {% csrf_token %}
         <div class="user-details">

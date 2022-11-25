@@ -21,6 +21,7 @@
         margin-right: 1rem;
         background-color: #000080;
         color: #fff;
+        text-align:center;
     }
     .btn{
         background-color:#fff;
@@ -28,6 +29,13 @@
         color: #000000;
         height: 3rem;
         margin-right: 1rem;
+        
+    }
+    .yea{
+        background-color: #000080;
+        color: #fff;
+        text-align:center;
+    
     }
     .allrecords{
         font-size: 12px;
@@ -40,7 +48,21 @@
         .s_information h3{
             font-size: 16px;
         }
-
+        .cour{
+            width:50%;
+            height:55px;  
+        }
+        .yea{
+margin-top:80px;
+margin-left:-53%;
+height:55px;
+width:50%;
+position:static;
+        }
+        .se{
+            margin-top:5.2rem;
+            margin-right:6px;
+        }
     }
     
     
@@ -63,21 +85,21 @@
     <div class="filter">
         <form  method="POST">
             {% csrf_token %}
-            <select class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')" name="programme">
+            <select class="form-select form-select-lg mb-3 select cour" aria-label=".form-select-lg example" onChange="combo(this, 'demo')" name="programme">
                 {% for i in p %}
                 <option>{{i.0}}</option>
                 {% endfor %}
             </select>
     
-            <select  class="form-select form-select-lg mb-3 select" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="year" >
+            <select  class="form-select form-select-lg mb-3  yea" aria-label=".form-select-lg example" onChange="combo(this, 'demo')"  name="year" >
                 <option value="1">I</option>
                 <option value="2">II</option>
                 <option value="3">III</option>
                 <option value="4">IV</option>
             </select>
 
-            <button class="btn btn-primary" type="submit">Search</button>
-            <button class="btn btn-primary allrecords" type="submit" name="all">All Records</button>
+            <button class="btn btn-primary se" type="submit">Search</button>
+            <button class="btn btn-primary allrecords se" type="submit" name="all">All Records</button>
 
         </form>
        
